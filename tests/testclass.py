@@ -1,6 +1,6 @@
 class TestClass(object):
 
-    def overwrite(self, filename, str):
-        f = open(filename, 'w+')
+    def write(self, filename, str):
+        f = open(filename, 'a')
         f.write(str)
         f.close()
