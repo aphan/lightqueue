@@ -15,7 +15,11 @@ class Factory(object):
         else:
             self.dispatcher = Dispatcher()
 
-        logging.debug('Lightqueue started and listening for jobs')
+        message = 'Lightqueue started and listening for jobs'
+        if multiprocessing:
+            message += ' (multiprocessing enabled)'
+
+        logging.debug(message)
 
     def work(self):
         while True:

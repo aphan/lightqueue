@@ -1,3 +1,3 @@
 from lightqueue.factory import Factory
 
-Factory(queue_name='lqtest').work()
+Factory(multiprocessing=True, queue_name='lqtest').work()
