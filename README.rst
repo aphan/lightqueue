@@ -16,8 +16,8 @@ Say you have a function like this in a module called **mymodule**
 
 ::
 
-    def myfunc(self, num):
-      sum([x for x in range(num)])
+    def myfunc(num):
+      print sum([x for x in range(num)])
 
 To add the execution of this function as a job into lightqueue:
 
@@ -26,7 +26,7 @@ To add the execution of this function as a job into lightqueue:
     from lightqueue.queue import Queue
     from mymodule import myfunc
 
-    Queue q = Queue()
+    q = Queue()
     q.enqueue(myfunc, 9999) # add the job myfunc(9999) to the queue
     q.enqueue(myfunc, 1234567) # add the job myfunc(1234567) to the queue
 
@@ -36,8 +36,12 @@ To start processing these jobs, type this in a shell prompt:
 
     $ lightqueue start
 
-By default, lightqueue process jobs on the Redis server located at
-localhost:6379 at db=0.  To change any of these settings:
+
+Change db server
+--------------------
+
+By default, lightqueue adds jobs to and processes jobs from the Redis server
+located at localhost:6379 on db=0.  To change any of these settings:
 
 ::
 
@@ -48,6 +52,7 @@ Then give the lightqueue process the same settings:
 ::
 
     $ lightqueue start -host myredishost -port 7323 -db 4
+
 
 Parallel Processing
 --------------------
