@@ -11,16 +11,17 @@ class Queue(object):
         self.db = redis.StrictRedis(host='localhost', port=6379, db=0)
         self.queue_name = queue_name
 
-    def enqueue(self, func, *args):
+    def enqueue(self, func, *args, **kwargs):
         # Create a job object to hold the function. Then pickle the job object
         # and place it at the end of the queue.
 
-        job = Job(self.generate_job_id(), func, args)
+        job = Job(self.generate_job_id(), func, args, kwargs)
         pickled_job = pickle.dumps(job)
         self.db.lpush(self.queue_name, pickled_job)
 
     def dequeue(self):
-        # Remove a pickled job from the front of the queue.  If the queue is
+        # Remove a pickled job from the front of the queue and return a tuple
+        # containing the pickled job and the unpickled job.  If the queue is
         # empty, block until an item is available.
 
         try:

@@ -3,8 +3,9 @@ import sys
 
 class Func(object):
 
-    def __init__(self, func, args, job):
+    def __init__(self, func, args, kwargs, job):
         self.args = args
+        self.kwargs = kwargs
         self.job = job
 
         try:
@@ -27,7 +28,7 @@ class Func(object):
         try:
             # Execute the func then tell parent job that this func finished
             # successfully or if it failed
-            func(*self.args)
+            func(*self.args, **self.kwargs)
             self.job.finished_successfully()
         except (KeyboardInterrupt, SystemExit):
             # The worker will automatically handle adding this func's job

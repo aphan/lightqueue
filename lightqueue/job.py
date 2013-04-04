@@ -6,9 +6,9 @@ from func import Func
 class Job(object):
     # A job stores the representation of the function that is to be executed.
 
-    def __init__(self, id, func, args):
+    def __init__(self, id, func, args, kwargs):
         self.id = id
-        self.func = Func(func, args, self)
+        self.func = Func(func, args, kwargs, self)
 
     def start(self, worker, is_parent_process=True):
         # This function is called by the worker who dequeued it from the queue.
