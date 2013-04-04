@@ -13,7 +13,7 @@ class Job(object):
     def start(self, worker, is_parent_process=True):
         # This function is called by the worker who dequeued it from the queue.
         self.worker = worker
-        logging.debug('Started Job #' + repr(self.id))
+        logging.debug('Started Job #' + repr(self.id) + ' - ' + repr(self.func))
         self.start_time = time.time()
 
         # Execute the function
