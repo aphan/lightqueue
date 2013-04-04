@@ -2,7 +2,7 @@ import unittest
 import time
 import redis
 from lightqueue.queue import Queue
-from tests.testclass import TestClass
+from lightqueue.test.testclass import TestClass
 
 
 class TestParallelLightqueue(unittest.TestCase):
