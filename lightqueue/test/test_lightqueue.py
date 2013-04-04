@@ -8,7 +8,7 @@ from lightqueue.test.testclass import TestClass
 class TestLightqueue(unittest.TestCase):
 
     def setUp(self):
-        self.queue = Queue('lqtest')
+        self.queue = Queue(queue_name='lqtest')
         self.filename = 'test_file.txt'
 
     def tearDown(self):

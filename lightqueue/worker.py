@@ -6,8 +6,8 @@ from queue import Queue
 class Worker(object):
     # A worker dequeues and executes jobs from the queue
 
-    def __init__(self, queue_name):
-        self.queue = Queue(queue_name)
+    def __init__(self, host, port, db, queue_name):
+        self.queue = Queue(host, port, db, queue_name)
         self.current_pickled_job = None
 
         # Register handlers for SIGINT and SIGTERM
@@ -33,4 +33,5 @@ class Worker(object):
 
         if self.current_pickled_job is not None:
             self.queue.add_pickled_jobs_to_front(self.current_pickled_job)
+
         sys.exit()

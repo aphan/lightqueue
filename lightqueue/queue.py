@@ -7,8 +7,10 @@ from job import Job
 class Queue(object):
     # A queue has the responsibility to queue and dequeu jobs from the database
 
-    def __init__(self, queue_name='lq'):
-        self.db = redis.StrictRedis(host='localhost', port=6379, db=0)
+    def __init__(self, host='localhost', port=6379, db=0,
+                 queue_name='lightqueue'):
+
+        self.db = redis.StrictRedis(host, port, db)
         self.queue_name = queue_name
 
     def enqueue(self, func, *args, **kwargs):

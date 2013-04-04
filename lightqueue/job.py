@@ -13,7 +13,8 @@ class Job(object):
     def start(self, worker, is_parent_process=True):
         # This function is called by the worker who dequeued it from the queue.
         self.worker = worker
-        logging.debug('Started Job #' + repr(self.id) + ' - ' + repr(self.func))
+        logging.debug('Started Job #' + repr(self.id) + ' - ' +
+                      repr(self.func))
         self.start_time = time.time()
 
         # Execute the function
@@ -23,8 +24,10 @@ class Job(object):
         # Log that this job successfuly finished and tell the worker that this
         # job completed
 
-        logging.debug('Finished Job #' + repr(self.id) + '; took ' +
-                      repr(time.time() - self.start_time) + ' seconds')
+        logging.debug('Finished Job #' + repr(self.id) + ' - ' +
+                      repr(self.func) + '; took ' + repr(time.time() -
+                      self.start_time) + ' seconds')
+
         self.worker.job_finished(self.id)
 
     def failed(self, error_str):
