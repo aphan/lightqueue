@@ -1,3 +1,3 @@
-from lightqueue.factory import Factory
+from lightqueue import Factory
 
-Factory().work()
+Factory().start()

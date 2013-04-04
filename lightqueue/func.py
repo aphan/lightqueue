@@ -8,9 +8,8 @@ class Func(object):
         self.job = job
 
         try:
-            # If the function passed is an instance method,
-            # set who called the function, the function itself, and the
-            # function args
+            # If the function passed is an instance method, set who called the
+            # function, the function itself, and the function args
             self.caller = func.__self__
             self.name = func.__name__
         except AttributeError:
@@ -30,5 +29,10 @@ class Func(object):
             # successfully or if it failed
             func(*self.args)
             self.job.finished_successfully()
+        except (KeyboardInterrupt, SystemExit):
+            # The worker will automatically handle adding this func's job
+            # back onto the queue
+            sys.exit()
         except:
+            # Some exception ocurred that caused the job to fail
             self.job.failed(sys.exc_info()[0])
