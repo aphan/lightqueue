@@ -24,7 +24,8 @@ class Factory(object):
                    repr(port) + ', db ' + repr(db))
 
         if multiprocessing:
-            message += ' (multiprocessing enabled)'
+            message += (' (multiprocessing enabled with ' + repr(workers)
+                        + ' workers)')
         logging.debug(message)
 
     def start(self):

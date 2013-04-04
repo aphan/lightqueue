@@ -7,8 +7,8 @@ setup(
     author_email='aphansh@gmail.com',
     packages=['lightqueue', 'lightqueue.test'],
     scripts=['bin/start_lightqueue.py'],
-    url='http://pypi.python.org/pypi/lightqueue/',
-    license='LICENSE.txt',
+    url='https://github.com/aphan/lightqueue',
+    license='MIT',
     description='lightweight Python job queue with multiprocessing support',
     long_description=open('README.txt').read(),
     entry_points={
