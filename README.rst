@@ -37,6 +37,10 @@ To start processing these jobs, type this in a shell prompt:
     $ lightqueue start
 
 
+If the lightqueue process has to shut down in the middle of executing the job,
+it will place the job back onto the front of the queue.
+
+
 Change db server
 --------------------
 

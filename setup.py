@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='lightqueue',
-    version='0.1.0',
+    version='0.1.1',
     author='Adam Phan',
     author_email='aphansh@gmail.com',
     packages=['lightqueue', 'lightqueue.test'],
